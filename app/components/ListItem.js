@@ -17,7 +17,9 @@ export default function ListItem({
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight underlayColor={Colors.light} onPress={onPress}>
         <View style={styles.container}>
-          {icon && <Icon name={icon} />}
+          {icon && (
+            <Icon name={icon.name} backgroundColor={icon.backgroundColor} />
+          )}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.propertiesContainer}>
             <AppText style={styles.title}>{title}</AppText>
@@ -41,7 +43,6 @@ const styles = StyleSheet.create({
   propertiesContainer: {
     marginLeft: 10,
     justifyContent: "center",
-    alignItems: "center",
   },
   title: {
     fontWeight: "500",
