@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, FlatList } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 import ListItem from "../components/ListItem";
+import ListItemSeparator from "../components/ListItemSeparator";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 
@@ -28,7 +30,7 @@ export default function AccountScreen() {
   );
 
   return (
-    <Screen>
+    <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
           title="hakim"
@@ -40,13 +42,23 @@ export default function AccountScreen() {
         <FlatList
           data={menuItems}
           renderItem={renderItem}
+          ItemSeparatorComponent={ListItemSeparator}
           keyExtractor={(item) => item.title}
+        />
+      </View>
+      <View style={styles.container}>
+        <ListItem
+          title="Log Out "
+          icon={{ name: "logout", backgroundColor: "#ffe66d" }}
         />
       </View>
     </Screen>
   );
 }
 const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: Colors.light,
+  },
   container: {
     marginVertical: 20,
   },

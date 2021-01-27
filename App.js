@@ -8,6 +8,7 @@ import Icon from "./app/components/Icon";
 import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import Colors from "./app/config/colors";
+import ListingsScreen from "./app/screens/ListingsScreen";
 export default function App() {
   console.log("app executed");
 
@@ -27,6 +28,7 @@ export default function App() {
     //     //image={require("./app/assets/hakim.jpg")}
     //   />
     // </Screen>
-    <AccountScreen />
+    //<AccountScreen />
+    <ListingsScreen />
   );
 }
