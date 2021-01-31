@@ -1,5 +1,5 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useState } from "react";
+import { View, Switch } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
@@ -9,8 +9,18 @@ import ListItem from "./app/components/ListItem";
 import AccountScreen from "./app/screens/AccountScreen";
 import Colors from "./app/config/colors";
 import ListingsScreen from "./app/screens/ListingsScreen";
+import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
 export default function App() {
   console.log("app executed");
+  const [x, setX] = useState(false);
+  const categories = [
+    { label: "Chairs", value: "chairs" },
+    { label: "Cars", value: "cars" },
+    { label: "Clothes", value: "clothes" },
+    { label: "Jewellery", value: "jewellery" },
+  ];
+  const [selectedCategory, setSelectedCategory] = useState(categories[0].label);
 
   return (
     //<WelcomeScreen />
@@ -29,6 +39,18 @@ export default function App() {
     //   />
     // </Screen>
     //<AccountScreen />
-    <ListingsScreen />
+    //<ListingsScreen />
+    <Screen>
+      <AppTextInput icon="email" placeholder="email" />
+      <AppTextInput icon="email" placeholder="email" />
+      <Switch value={x} onValueChange={(y) => setX(y)} />
+      <AppPicker
+        selectedCategory={selectedCategory}
+        onSelecteCategory={() => setSelectedCategory(selectedCategory)}
+        categories={categories}
+        icon="list-2"
+        placeholder="Category"
+      />
+    </Screen>
   );
 }
