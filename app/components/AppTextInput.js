@@ -1,14 +1,21 @@
 import React from "react";
 import { TextInput, View, StyleSheet, Platform } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Fontisto } from "@expo/vector-icons";
 import Colors from "../config/colors";
 
 import defaultStyle from "../config/style";
-export default function AppTextInput({ icon, placeholder, ...otherprops }) {
+export default function AppTextInput({
+  icon,
+  placeholder,
+  onChangeText,
+  isSecure,
+  onFocus,
+  ...otherprops
+}) {
   return (
     <View style={styles.container}>
       {icon && (
-        <MaterialCommunityIcons
+        <Fontisto
           name={icon}
           size={20}
           style={styles.icon}
@@ -18,6 +25,9 @@ export default function AppTextInput({ icon, placeholder, ...otherprops }) {
       <TextInput
         style={[styles.textInput, defaultStyle.text]}
         placeholder={placeholder}
+        onChangeText={onChangeText}
+        secureTextEntry={isSecure}
+        onFocus={onFocus ? onFocus : null}
       />
     </View>
   );

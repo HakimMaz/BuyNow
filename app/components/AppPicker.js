@@ -12,7 +12,8 @@ import Screen from "./Screen";
 export default function AppPicker({
   icon,
   categories,
-  selectedCategory,
+  selectedItem,
+  onSelecteItem,
   placeholder,
 }) {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,13 @@ export default function AppPicker({
 
   const renderItem = ({ item }) => (
     <View>
-      <PickerItem label={item.label} onPress={() => setOpen(false)} />
+      <PickerItem
+        label={item.label}
+        onPress={() => {
+          onSelecteItem(item);
+          setOpen(false);
+        }}
+      />
       <ListItemSeparator />
     </View>
   );
@@ -39,7 +46,7 @@ export default function AppPicker({
             style={styles.icon}
           />
           <AppText style={styles.textPicker}>
-            {selectedCategory ? selectedCategory : placeholder}
+            {selectedItem ? selectedItem.label : placeholder}
           </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
@@ -51,7 +58,12 @@ export default function AppPicker({
 
       <Modal visible={open} animationType="slide">
         <Screen>
-          <Button title="close" onPress={() => setOpen(false)} />
+          <Button
+            title="close"
+            onPress={() => {
+              setOpen(false);
+            }}
+          />
           <FlatList
             data={categories}
             renderItem={renderItem}
