@@ -17,13 +17,8 @@ import ListingEditScreen from "./app/screens/ListingEditScreen";
 export default function App() {
   console.log("app executed");
   const [x, setX] = useState(false);
-  const categories = [
-    { label: "Chairs", value: "chairs" },
-    { label: "Cars", value: "cars" },
-    { label: "Clothes", value: "clothes" },
-    { label: "Jewellery", value: "jewellery" },
-  ];
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+
+  //const [selectedCategory, setSelectedCategory] = useState(categories[0]);
 
   return (
     //<WelcomeScreen />
@@ -55,11 +50,11 @@ export default function App() {
     //   placeholder="Category"
     // />
     // </Screen>
-    // <Screen>
-    //   <LoginScreen />
-    // </Screen>
+
+    <LoginScreen />
 
     //<RegisterScreen />
-    <ListingEditScreen />
+
+    //<ListingEditScreen />
   );
 }
