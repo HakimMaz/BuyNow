@@ -10,6 +10,8 @@ export default function AppTextInput({
   onChangeText,
   isSecure,
   onFocus,
+  onBlur,
+
   ...otherprops
 }) {
   return (
@@ -27,7 +29,8 @@ export default function AppTextInput({
         placeholder={placeholder}
         onChangeText={onChangeText}
         secureTextEntry={isSecure}
-        onFocus={onFocus ? onFocus : null}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     </View>
   );
