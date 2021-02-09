@@ -11,9 +11,9 @@ import Screen from "./Screen";
 
 export default function AppPicker({
   icon,
-  categories,
+  items,
   selectedItem,
-  onSelecteItem,
+  onSelectItem,
   placeholder,
 }) {
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ export default function AppPicker({
       <PickerItem
         label={item.label}
         onPress={() => {
-          onSelecteItem(item);
+          onSelectItem(item);
           setOpen(false);
         }}
       />
@@ -65,7 +65,7 @@ export default function AppPicker({
             }}
           />
           <FlatList
-            data={categories}
+            data={items}
             renderItem={renderItem}
             keyExtractor={(item) => item.value}
           />

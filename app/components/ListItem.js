@@ -22,9 +22,21 @@ export default function ListItem({
           )}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.propertiesContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subtitle && <AppText style={styles.subtitle}>{subtitle}</AppText>}
+            <AppText style={styles.title} numberOfLines={1}>
+              {title}
+            </AppText>
+            {subtitle && (
+              <AppText style={styles.subtitle} numberOfLines={2}>
+                {subtitle}
+              </AppText>
+            )}
           </View>
+          <MaterialCommunityIcons
+            color={Colors.medium}
+            style={styles.materialIcon}
+            name="chevron-right"
+            size={25}
+          />
         </View>
       </TouchableHighlight>
     </Swipeable>
@@ -32,6 +44,7 @@ export default function ListItem({
 }
 const styles = StyleSheet.create({
   container: {
+    alignItems: "center",
     flexDirection: "row",
     padding: 15,
     backgroundColor: Colors.white,
@@ -42,6 +55,7 @@ const styles = StyleSheet.create({
     width: 70,
   },
   propertiesContainer: {
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
@@ -51,4 +65,10 @@ const styles = StyleSheet.create({
   subtitle: {
     color: Colors.medium,
   },
+  // materialIcon: {
+  //   justifyContent: "center",
+  //   alignContent: "center",
+  //   marginLeft: "60%",
+  //   marginVertical: 20,
+  // },
 });

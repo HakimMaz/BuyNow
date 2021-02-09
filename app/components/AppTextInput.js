@@ -11,7 +11,7 @@ export default function AppTextInput({
   isSecure,
   onFocus,
   onBlur,
-
+  numberOfLine,
   ...otherprops
 }) {
   return (
@@ -31,6 +31,8 @@ export default function AppTextInput({
         secureTextEntry={isSecure}
         onFocus={onFocus}
         onBlur={onBlur}
+        numberOfLine={numberOfLine}
+        {...otherprops}
       />
     </View>
   );

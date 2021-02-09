@@ -8,20 +8,21 @@ export default function MessagesScreen() {
   const initialMessages = [
     {
       id: 1,
-      title: "T1",
-      description: "D1",
+      title: "Hakim",
+      description:
+        "Hello darkness my old friend, i just come here to start again , in this world softly  creeping ,again all people that want meeting ",
       image: require("../assets/hakim.jpg"),
     },
     {
       id: 2,
-      title: "T2",
-      description: "D2",
+      title: "Mosh",
+      description: "Mosh is new in yassir",
       image: require("../assets/user2.jpg"),
     },
     {
       id: 3,
-      title: "T3",
-      description: "D3",
+      title: "Dalila",
+      description: "never say never ..Believe me",
       image: require("../assets/user3.jpg"),
     },
   ];
@@ -50,16 +51,7 @@ export default function MessagesScreen() {
         )}
         ItemSeparatorComponent={() => <ListItemSeparator />}
         refreshing={refreshing}
-        onRefresh={() =>
-          setMessages([
-            {
-              id: 2,
-              title: "T2",
-              description: "D2",
-              image: require("../assets/user2.jpg"),
-            },
-          ])
-        }
+        onRefresh={() => console.log("hello messages ", messages)}
       />
     </Screen>
   );
