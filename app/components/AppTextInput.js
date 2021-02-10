@@ -12,10 +12,11 @@ export default function AppTextInput({
   onFocus,
   onBlur,
   numberOfLine,
+  width = "100%",
   ...otherprops
 }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { width }]}>
       {icon && (
         <Fontisto
           name={icon}
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.light,
     borderRadius: 25,
-    width: "100%",
+
     flexDirection: "row",
     padding: 15,
     marginVertical: 10,

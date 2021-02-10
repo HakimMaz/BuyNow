@@ -2,7 +2,12 @@ import { useFormikContext } from "formik";
 import React from "react";
 import AppTextInput from "../AppTextInput";
 import ErrorsMesage from "./ErrorsMesage";
-export default function AppFormField({ name, numberOfLine, ...otherProps }) {
+export default function AppFormField({
+  name,
+  numberOfLine,
+  width,
+  ...otherProps
+}) {
   const { handleChange, handleBlur, errors, touched } = useFormikContext();
   return (
     <React.Fragment>
@@ -11,6 +16,7 @@ export default function AppFormField({ name, numberOfLine, ...otherProps }) {
         //onFocus={() => focusInput("email")}onChangeText
         onChangeText={handleChange(name)}
         numberOfLine={numberOfLine}
+        width={width}
         {...otherProps}
       />
 

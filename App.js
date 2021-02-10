@@ -31,7 +31,7 @@ export default function App() {
   return (
     //<WelcomeScreen />
     //<ViewImageScreen />
-    <MessagesScreen />
+    //<MessagesScreen />
     // <Screen>
     //   <ListItem
     //     title="hakim"
@@ -69,6 +69,6 @@ export default function App() {
 
     //<RegisterScreen />
 
-    // <ListingEditScreen />
+    <ListingEditScreen />
   );
 }

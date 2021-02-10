@@ -42,6 +42,7 @@ export default function ListingEditScreen() {
             placeholder="Price"
             name="price"
             maxLength={255}
+            width={120}
           />
           <AppPicker
             selectedItem={selectedItem}
@@ -49,6 +50,7 @@ export default function ListingEditScreen() {
             onSelectItem={() => handleselectedItem(selectedItem.value)}
             items={categories}
             placeholder="Category"
+            width="50%"
           />
           <AppFormField
             name="description"

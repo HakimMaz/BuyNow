@@ -15,6 +15,7 @@ export default function AppPicker({
   selectedItem,
   onSelectItem,
   placeholder,
+  width = "100%",
 }) {
   const [open, setOpen] = useState(false);
   const handleModal = async () => {
@@ -38,7 +39,7 @@ export default function AppPicker({
   return (
     <React.Fragment>
       <TouchableWithoutFeedback onPress={() => setOpen(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           <Fontisto
             name={icon}
             size={20}
@@ -78,7 +79,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.light,
     borderRadius: 25,
-    width: "100%",
     flexDirection: "row",
     padding: 15,
     marginVertical: 30,
