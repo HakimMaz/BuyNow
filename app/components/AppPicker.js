@@ -8,16 +8,22 @@ import ListItem from "./ListItem";
 import ListItemSeparator from "./ListItemSeparator";
 import PickerItem from "./PickerItem";
 import Screen from "./Screen";
+import { useFormikContext } from "formik";
+import ErrorsMessage from "../components/forms/ErrorsMesage";
 
 export default function AppPicker({
   icon,
   items,
+  name,
   selectedItem,
   onSelectItem,
+  PickerItemComponent = PickerItem,
+  numberOfColumns = 1,
   placeholder,
   width = "100%",
 }) {
   const [open, setOpen] = useState(false);
+  const { errors, touched, values } = useFormikContext();
   const handleModal = async () => {
     await setOpen(!open);
     console.log("hello modal : =>", open);
@@ -28,8 +34,7 @@ export default function AppPicker({
       <PickerItem
         label={item.label}
         onPress={() => {
-          onSelectItem(item);
-          setOpen(false);
+          console.log(" item selectionne: ", item);
         }}
       />
       <ListItemSeparator />
@@ -47,7 +52,7 @@ export default function AppPicker({
             style={styles.icon}
           />
           <AppText style={styles.textPicker}>
-            {selectedItem ? selectedItem.label : placeholder}
+            {selectedItem === "Category" ? placeholder : selectedItem.label}
           </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
@@ -56,7 +61,7 @@ export default function AppPicker({
           />
         </View>
       </TouchableWithoutFeedback>
-
+      <ErrorsMessage visible={touched[name]} error={errors[name]} />
       <Modal visible={open} animationType="slide">
         <Screen>
           <Button
@@ -67,7 +72,22 @@ export default function AppPicker({
           />
           <FlatList
             data={items}
-            renderItem={renderItem}
+            numColumns={numberOfColumns}
+            renderItem={({ item }) => (
+              <View>
+                <PickerItemComponent
+                  item={item}
+                  label={item.label}
+                  onPress={() => {
+                    console.log(" item selectionne: ", item);
+                    onSelectItem(item);
+                    onSelectItem(item);
+                    values.category = item.value;
+                    setOpen(false);
+                  }}
+                />
+              </View>
+            )}
             keyExtractor={(item) => item.value}
           />
         </Screen>

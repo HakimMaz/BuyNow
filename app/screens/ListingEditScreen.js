@@ -4,22 +4,62 @@ import * as yup from "yup";
 import Screen from "../components/Screen";
 import AppPicker from "../components/AppPicker";
 import { AppForm, AppFormField, SubmitButton } from "../components/forms";
+import CategoryPickerItem from "../components/CategoryPickerItem";
+import AppFormPicker from "../components/forms/AppFormPicker";
 
 export default function ListingEditScreen() {
   const validationSchema = yup.object().shape({
     title: yup.string().required().min(2).label("Title"),
     price: yup.number().positive().required().min(1).max(10000).label("Price"),
     description: yup.string().label("Description"),
-    category: yup.string().label("category"),
+    category: yup.object().required().nullable().label("category"),
   });
 
   const categories = [
-    { label: "Chairs", value: "chairs" },
-    { label: "Cars", value: "cars" },
-    { label: "Clothes", value: "clothes" },
-    { label: "Jewellery", value: "jewellery" },
+    {
+      label: "Chairs",
+      value: "chairs",
+      backgroundColor: "#ff9292",
+      icon: { name: "apps" },
+    },
+    {
+      label: "Cars",
+      value: "cars",
+      backgroundColor: "#16c79a",
+      icon: { name: "car" },
+    },
+    {
+      label: "Clothes",
+      value: "clothes",
+      backgroundColor: "#1687a7",
+      icon: { name: "tshirt-crew" },
+    },
+    {
+      label: "Parfumes",
+      value: "parfumes",
+      backgroundColor: "#fb743e",
+      icon: { name: "gift" },
+    },
+    {
+      label: "Sport",
+      value: "sport",
+      backgroundColor: "#a4ebf3",
+      icon: { name: "volleyball" },
+    },
+    {
+      label: "Photos",
+      value: "photos",
+      backgroundColor: "#eabf9f",
+      icon: { name: "camera-outline" },
+    },
+    {
+      label: "Cake",
+      value: "cake",
+      backgroundColor: "#99bbad",
+      icon: { name: "cupcake" },
+    },
   ];
-  const [selectedItem, setSelectedItem] = useState(categories[0]);
+  const [selectedItem, setSelectedItem] = useState("Category");
   const handleselectedItem = (item) => {
     console.log(item);
   };
@@ -31,7 +71,7 @@ export default function ListingEditScreen() {
             title: "",
             price: "",
             description: "",
-            category: "",
+            category: null,
           }}
           onSubmit={(values) => console.log(values)}
           validationSchema={validationSchema}
@@ -44,13 +84,14 @@ export default function ListingEditScreen() {
             maxLength={255}
             width={120}
           />
+
           <AppPicker
+            numberOfColumns={3}
             selectedItem={selectedItem}
-            //onSelectItem={(item) => setSelectedItem(item)}
-            onSelectItem={() => handleselectedItem(selectedItem.value)}
+            PickerItemComponent={CategoryPickerItem}
+            onSelectItem={(item) => setSelectedItem(item)}
             items={categories}
             placeholder="Category"
-            width="50%"
           />
           <AppFormField
             name="description"

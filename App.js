@@ -26,7 +26,7 @@ export default function App() {
     { label: "Clothes", value: "clothes" },
     { label: "Jewellery", value: "jewellery" },
   ];
-  //const [selectedItem, setSelectedItem] = useState(categories[0]);
+  const [selectedItem, setSelectedItem] = useState(categories[0]);
 
   return (
     //<WelcomeScreen />
