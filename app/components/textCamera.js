@@ -91,7 +91,10 @@ export default function textCamera() {
   return (
     <Screen>
       <Button title="select an image" onPress={selectImage} />
-      <Image source={{ uri: uriImage }} style={{ width: 200, height: 200 }} />
+      <Image
+        source={{ uri: uriImage }}
+        style={{ marginLeft: 20, marginVertical: 20, width: 200, height: 200 }}
+      />
     </Screen>
   );
 }
