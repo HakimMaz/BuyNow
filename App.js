@@ -15,6 +15,7 @@ import LoginScreen from "./app/screens/LoginScreen";
 import RegisterScreen from "./app/screens/RegisterScreen";
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import { AppFormPicker } from "./app/components/forms";
+import TextCamera from "./app/components/textCamera";
 
 export default function App() {
   console.log("app executed");
@@ -69,6 +70,9 @@ export default function App() {
 
     //<RegisterScreen />
 
-    <ListingEditScreen />
+    //<ListingEditScreen />
+    <Screen>
+      <TextCamera />
+    </Screen>
   );
 }
